@@ -59,13 +59,14 @@ class Product() : Parcelable {
     }
 
     private fun setPhoto (name: String) {
-        val lowerCaseName = name.lowercase()
-        lowerCaseName.replace("\\s".toRegex(), "")
+        var lowerCaseName = name.lowercase()
+        lowerCaseName = lowerCaseName.replace("\\s".toRegex(), "")
         for (i in 1..3) {
             val pathBuilder = StringBuilder()
             pathBuilder.append(PHOTO_SOURCE_PATH)
             pathBuilder.append(lowerCaseName)
             pathBuilder.append("_$i")
+            System.out.println(pathBuilder.toString())
             photos.add(pathBuilder.toString())
         }
     }
