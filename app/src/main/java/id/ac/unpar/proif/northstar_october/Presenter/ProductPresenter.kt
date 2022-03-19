@@ -74,11 +74,9 @@ class ProductPresenter(private val ui: IProducts) {
         when (category) {
             Code.CATEGORY_DEFAULT -> ui.loadProducts(products)
             else -> {
-                System.out.println(category)
                 tempProducts = ArrayList()
                 val productsSize = products.size
                 for (i in 0 until productsSize) {
-                    System.out.println(products[i].category)
                     if (products[i].category == category) {
                         tempProducts.add(products[i])
                     }
