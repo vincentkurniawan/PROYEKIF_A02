@@ -1,8 +1,10 @@
 package id.ac.unpar.proif.northstar_october.Model
 
 import android.os.Parcelable
+import android.util.Log
 import java.lang.StringBuilder
 import kotlinx.parcelize.Parcelize
+import kotlin.math.log
 
 @Parcelize
 class Product() : Parcelable {
@@ -19,7 +21,8 @@ class Product() : Parcelable {
         this.price = price
         this.condition = condition
         this.description = description
-        setPhoto(name)
+        this.setPhoto(name)
+
     }
 
     companion object {
@@ -67,6 +70,7 @@ class Product() : Parcelable {
             pathBuilder.append(lowerCaseName)
             pathBuilder.append("_$i")
             System.out.println(pathBuilder.toString())
+            Log.d("key",pathBuilder.toString())
             photos.add(pathBuilder.toString())
         }
     }
