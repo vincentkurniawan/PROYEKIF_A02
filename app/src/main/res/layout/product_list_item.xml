@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/rounded_corner_inputfield"
+    >
+
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/fredoka_one"
+        android:text="PRODUCT NAME"
+        android:textColor="#6639A6"
+        android:textAlignment="center"
+        android:textSize="12sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/category"
+        android:textAlignment="center"
+        android:text="CATEGORY"
+        android:textColor="#6639A6"
+        android:fontFamily="@font/fredoka_one"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/price"
+        android:textAlignment="center"
+        android:text="PRICE"
+        android:fontFamily="@font/fredoka_one"
+        android:textSize="12sp"
+        android:textColor="#6639A6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/condition"
+        android:textAlignment="center"
+        android:text="CONDITION"
+        android:fontFamily="@font/fredoka_one"
+        android:textSize="12sp"
+        android:textColor="#6639A6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+    </TextView>
+
+
+</LinearLayout>

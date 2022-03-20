@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#FFFF"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/fredoka_one"
+        android:text="CART"
+        android:textColor="#6639A6"
+        android:textSize="30sp">
+
+    </TextView>
+
+    <ListView
+        android:id="@+id/lv_cart"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_head">
+
+    </ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_title_total"
+            android:text="TOTAL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true">
+
+        </TextView>
+        <TextView
+            android:id="@+id/total"
+            android:text="2000"
+            android:layout_toRightOf="@id/tv_title_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true">
+
+        </TextView>
+
+        <Button
+            android:text="CHECKOUT"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+        </Button>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lv_products"
+        android:gravity="center"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp">
+        <Button
+            android:id="@+id/home"
+            android:text="HOME"
+            android:backgroundTint="#6639A6"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:fontFamily="@font/fredoka_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#FFFF"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/fredoka_one"
+        android:text="OUR PRODUCTS"
+        android:textColor="#6639A6"
+        android:textSize="30sp">
+
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/ll_toolbar"
+        android:layout_below="@id/tv_title"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <ImageView
+                android:src="@drawable/outline_search_24"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            </ImageView>
+
+            <EditText
+                android:id="@+id/et_filter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/montserrat"
+                android:backgroundTint="#6639A6"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:textColor="#6639A6">
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:textAlignment="textEnd">
+
+            <Spinner
+                android:id="@+id/category_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/iv_tiles"
+                android:src="@drawable/ic_baseline_apps_24"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            </ImageView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_toolbar"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/product_name"
+            android:text="PRODUCT NAME"
+            android:fontFamily="@font/fredoka_one"
+            android:textColor="#6639A6"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/category"
+            android:textAlignment="center"
+            android:text="CATEGORY"
+            android:textSize="12sp"
+            android:fontFamily="@font/fredoka_one"
+            android:textColor="#6639A6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/price"
+            android:textAlignment="center"
+            android:text="PRICE"
+            android:fontFamily="@font/fredoka_one"
+            android:textColor="#6639A6"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/condition"
+            android:textAlignment="center"
+            android:text="CONDITION"
+            android:fontFamily="@font/fredoka_one"
+            android:textColor="#6639A6"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_products"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_head">
+
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lv_products"
+        android:gravity="center"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp">
+        <Button
+            android:id="@+id/show_more"
+            android:text="SHOW MORE"
+            android:backgroundTint="#6639A6"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:fontFamily="@font/fredoka_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>
