@@ -22,6 +22,7 @@ class Product() : Parcelable {
         this.condition = condition
         this.description = description
         this.setPhoto(name)
+
     }
 
     companion object {
