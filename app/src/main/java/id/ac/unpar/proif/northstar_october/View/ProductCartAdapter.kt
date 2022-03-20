@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import androidx.fragment.app.FragmentManager
 import id.ac.unpar.proif.northstar_october.Model.Box
 import id.ac.unpar.proif.northstar_october.Presenter.CartPresenter
 import id.ac.unpar.proif.northstar_october.databinding.ProductCartItemBinding
@@ -40,18 +41,27 @@ class ProductCartAdapter(private val activity: Activity, private var presenter: 
             }
         }
 
-        val currBox = getItem(i)
-
         return binding.root
     }
 
-    inner class ViewHolder: View.OnClickListener {
+    inner class ViewHolder (private var binding: ProductCartItemBinding, private var currentBox: Box, fragmentManager: FragmentManager): View.OnClickListener {
 
-        constructor() {
+        override fun onClick(view: View?) {
+            when (view) {
+                binding.checkbox -> {
+                    if (binding.checkbox.isChecked){
+                        // request nambah total
 
+                    }else{
+                        // request kurangin total
+                    }
+                    currentBox.triggerSelected()
+                }
+            }
         }
-        override fun onClick(p0: View?) {
-            TODO("Not yet implemented")
+
+        fun requestChangeTotal () {
+
         }
 
     }
