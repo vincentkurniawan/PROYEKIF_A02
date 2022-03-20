@@ -13,13 +13,13 @@ class Product() : Parcelable {
     var description: String = ""
     var photos: ArrayList<String> = ArrayList()
 
-    constructor(name:String, category:Int, price:Int, condition:Int, description:String, photos:ArrayList<String>) : this() {
+    constructor(name:String, category:Int, price:Int, condition:Int, description:String) : this() {
         this.name = name
         this.category = category
         this.price = price
         this.condition = condition
         this.description = description
-        this.photos=photos;
+        setPhoto(name)
     }
 
     companion object {
