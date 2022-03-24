@@ -1,9 +1,11 @@
 package id.ac.unpar.proif.northstar_october.View
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import id.ac.unpar.proif.northstar_october.Model.Box
 import id.ac.unpar.proif.northstar_october.Model.Code
@@ -19,6 +21,7 @@ class ProductCartFragments: Fragment(), View.OnClickListener, ICart {
     private lateinit var presenter: CartPresenter
     private lateinit var adapter: ProductCartAdapter
     private var pageFrom: Int = Code.PAGE_LIST_MODE
+    private var countItemSelected: Int = 0
 
     companion object {
         // singleton
@@ -49,6 +52,13 @@ class ProductCartFragments: Fragment(), View.OnClickListener, ICart {
         ) { requestKey, result ->
             pageFrom = result.getInt("pageFrom")
         }
+        parentFragmentManager.setFragmentResultListener(
+            Code.REQKEY_REMOVE_BOX_AT_CART, this
+        ) { requestKey, result ->
+            val box = Parcels.unwrap<Any>(result.getParcelable("box")) as Box
+            presenter.deleteProduct(box)
+            presenter.setTotalCost()
+        }
 
         // set binding textView text
         binding.total.text = "$ 0"
@@ -78,6 +88,7 @@ class ProductCartFragments: Fragment(), View.OnClickListener, ICart {
     override fun changeTotal(value: String, count: Int) {
         binding.total.text = value
         binding.checkout.text = "CHECKOUT ($count)"
+        countItemSelected = count
     }
 
     private fun addItemFromDetails (product: Product) {
@@ -91,11 +102,23 @@ class ProductCartFragments: Fragment(), View.OnClickListener, ICart {
     }
 
     private fun moveToPayment () {
-        val cart = presenter.getAllItemSelected()
-        val result = Bundle()
-        result.putParcelable("cart", Parcels.wrap(cart))
-        parentFragmentManager.setFragmentResult(Code.REQKEY_MOVE_TO_PAYMENT, result)
-        changePage(Code.PAGE_DETAILS_MODE)
+        if (countItemSelected > 0) {
+            val cart = presenter.getAllItemSelected()
+            val result = Bundle()
+            result.putParcelable("cart", Parcels.wrap(cart))
+            parentFragmentManager.setFragmentResult(Code.REQKEY_MOVE_TO_PAYMENT, result)
+            changePage(Code.PAGE_PAYMENT)
+        }else{
+            noItemSelectedToast()
+        }
+
+    }
+
+    private fun noItemSelectedToast() {
+        val toast = Toast.makeText(context, "Please select an item", Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.CENTER, 0, 0)
+        toast.show()
+
     }
 
 }

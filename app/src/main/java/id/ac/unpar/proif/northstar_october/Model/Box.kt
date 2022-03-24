@@ -1,6 +1,10 @@
 package id.ac.unpar.proif.northstar_october.Model
 
-class Box (private var product: Product)  {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+class Box (private var product: Product): Parcelable  {
     private var quantity = 1
     private var isChecked = false
 

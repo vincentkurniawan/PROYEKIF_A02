@@ -7,6 +7,7 @@ object Code {
     const val PAGE_TILES_MODE = 1
     const val PAGE_DETAILS_MODE = 2
     const val PAGE_CART = 3
+    const val PAGE_PAYMENT = 4
     const val PAGE_EXIT = -100
 
     const val CONDITION_NEW = 100
@@ -35,4 +36,5 @@ object Code {
     const val REQKEY_MOVE_TO_DETAILS = "MOVE_TO_DETAILS"
     const val REQKEY_MOVE_TO_PAYMENT = "MOVE_TO_PAYMENT"
     const val REQKEY_PAGE_FROM = "PAGE_FROM"
+    const val REQKEY_REMOVE_BOX_AT_CART = "REMOVE_BOX_AT_CART"
 }

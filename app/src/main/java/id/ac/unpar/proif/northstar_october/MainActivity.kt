@@ -7,10 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import id.ac.unpar.proif.northstar_october.Model.Code
 import id.ac.unpar.proif.northstar_october.Model.Inventory
-import id.ac.unpar.proif.northstar_october.View.ProductCartFragments
-import id.ac.unpar.proif.northstar_october.View.ProductDetailsFragments
-import id.ac.unpar.proif.northstar_october.View.ProductListFragments
-import id.ac.unpar.proif.northstar_october.View.ProductTilesFragments
+import id.ac.unpar.proif.northstar_october.View.*
 import id.ac.unpar.proif.northstar_october.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +19,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var productTilesFragments: ProductTilesFragments
     lateinit var productDetailsFragments: ProductDetailsFragments
     lateinit var productCartFragments: ProductCartFragments
+    lateinit var paymentFragment: PaymentFragment
     lateinit var inv: Inventory
     private var currentFragment = 0
-    private var backPointer = intArrayOf(Code.PAGE_EXIT, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE)
+    private var backPointer = intArrayOf(Code.PAGE_EXIT, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE, Code.PAGE_CART)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +40,9 @@ class MainActivity : AppCompatActivity() {
         this.productTilesFragments = ProductTilesFragments.newInstance(this.inv)
         this.productDetailsFragments = ProductDetailsFragments.newInstance()
         this.productCartFragments = ProductCartFragments.newInstance()
+        this.paymentFragment = PaymentFragment.newInstance()
 
-        fragments = arrayOf(this.productListFragments, this.productTilesFragments, this.productDetailsFragments, this.productCartFragments)
+        fragments = arrayOf(this.productListFragments, this.productTilesFragments, this.productDetailsFragments, this.productCartFragments, this.paymentFragment)
 
         // Add product-list-fragment to fragment transaction
         val ft = this.fm.beginTransaction()
