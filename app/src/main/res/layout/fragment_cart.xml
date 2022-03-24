@@ -27,6 +27,8 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
         android:layout_below="@+id/ll_head">
 
     </ListView>
@@ -38,11 +40,14 @@
 
         <TextView
             android:id="@+id/tv_title_total"
-            android:text="TOTAL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:layout_centerVertical="true">
+            android:fontFamily="@font/lato"
+            android:textSize="18sp"
+            android:textColor="#6639A6"
+            android:text="TOTAL">
 
         </TextView>
         <TextView
@@ -52,16 +57,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:fontFamily="@font/fredoka_one"
+            android:textSize="22sp"
+            android:textColor="#6639A6"
             android:layout_centerVertical="true">
 
         </TextView>
 
         <Button
-            android:text="CHECKOUT"
-            android:layout_alignParentEnd="true"
+            android:id="@+id/checkout"
+            android:backgroundTint="#6639A6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="CHECKOUT">
 
         </Button>
 
@@ -74,16 +84,12 @@
         android:gravity="center"
         android:paddingTop="25dp"
         android:paddingBottom="25dp">
-        <Button
-            android:id="@+id/home"
-            android:text="HOME"
-            android:backgroundTint="#6639A6"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:fontFamily="@font/fredoka_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </Button>
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+            android:layout_width="30dp"
+            android:layout_height="30dp">
+        </ImageView>
     </LinearLayout>
 
 </LinearLayout>

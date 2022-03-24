@@ -67,12 +67,13 @@ class ProductListFragments: Fragment(), IProducts, View.OnClickListener, Adapter
         ctSpinner.onItemSelectedListener = this
 
         // set onclick listener
-        binding.ivTiles.setOnClickListener { view: View -> onClick(view) }
-        binding.productName.setOnClickListener { view: View -> onClick(view) }
-        binding.price.setOnClickListener{ view: View -> onClick(view) }
-        binding.category.setOnClickListener { view: View -> onClick(view) }
-        binding.condition.setOnClickListener { view: View -> onClick(view) }
-        binding.showMore.setOnClickListener { view: View -> onClick(view) }
+        binding.ivTiles.setOnClickListener (this::onClick)
+        binding.productName.setOnClickListener (this::onClick)
+        binding.price.setOnClickListener(this::onClick)
+        binding.category.setOnClickListener (this::onClick)
+        binding.condition.setOnClickListener (this::onClick)
+        binding.showMore.setOnClickListener (this::onClick)
+        binding.ivCart.setOnClickListener(this::onClick)
 
         // load new products
         this.loadProducts()
@@ -116,30 +117,45 @@ class ProductListFragments: Fragment(), IProducts, View.OnClickListener, Adapter
         val result = Bundle()
         result.putParcelable("products", Parcels.wrap(product))
         result.putInt("pageFrom", Code.PAGE_LIST_MODE)
-        parentFragmentManager.setFragmentResult("MOVE_DETAILS", result)
+        parentFragmentManager.setFragmentResult(Code.REQKEY_MOVE_TO_DETAILS, result)
         changePage(Code.PAGE_DETAILS_MODE)
     }
 
     override fun onClick(view: View) {
         // tombol ubah ke tiles mode
-        if (view == binding.ivTiles) {
-            this.changePage(Code.PAGE_TILES_MODE)
-        } else if (view == binding.productName) {
-            presenter.sortProducts(Code.SORT_PRODUCTS_NAME)
-        } else if (view == binding.condition) {
-            presenter.sortProducts(Code.SORT_PRODUCTS_CONDITION)
-        } else if (view == binding.price) {
-            presenter.sortProducts(Code.SORT_PRODUCTS_PRICE)
-        } else if (view == binding.showMore) {
-            loadMoreProducts()
+        when (view) {
+            binding.ivTiles -> {
+                changePage(Code.PAGE_TILES_MODE)
+            }
+            binding.productName -> {
+                presenter.sortProducts(Code.SORT_PRODUCTS_NAME)
+            }
+            binding.condition -> {
+                presenter.sortProducts(Code.SORT_PRODUCTS_CONDITION)
+            }
+            binding.price -> {
+                presenter.sortProducts(Code.SORT_PRODUCTS_PRICE)
+            }
+            binding.showMore -> {
+                loadMoreProducts()
+            }
+            binding.ivCart -> {
+                changePage(Code.PAGE_CART)
+                sentPageFromInformation()
+            }
         }
     }
 
-    //METHOD GANTI HALAMAN
     private fun changePage(page: Int) {
         val result = Bundle()
         result.putInt("page", page)
-        parentFragmentManager.setFragmentResult("CHANGE_PAGE", result)
+        parentFragmentManager.setFragmentResult(Code.REQKEY_CHANGE_PAGE, result)
+    }
+
+    private fun sentPageFromInformation() {
+        val result = Bundle()
+        result.putInt("pageFrom", Code.PAGE_LIST_MODE)
+        parentFragmentManager.setFragmentResult(Code.REQKEY_PAGE_FROM, result)
     }
 
     // Spinner selected-item

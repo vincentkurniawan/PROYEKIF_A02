@@ -48,16 +48,16 @@ class ProductTilesAdapter(private val activity: Activity, private var presenter:
         }
 
         // SET TEXT and PHOTO
-        binding.name.text = currProduct.name
-        binding.category.text = currProduct.getCategory()
-        binding.condition.text = currProduct.getCondition()
-        binding.price.text = "$ " + currProduct.price
+        binding.name.text = currProduct.getName()
+        binding.category.text = currProduct.getFormattedCategory()
+        binding.condition.text = currProduct.getFormattedCondition()
+        binding.price.text = currProduct.getFormattedPrice()
 
         //IMPLEMENTASI GLIDE LIBRARY
         Glide.with(activity)
             .load(
                 activity.resources.getIdentifier(
-                    currProduct.photos[0],
+                    currProduct.getPhotos()[0],
                     "drawable",
                     activity.packageName
                 )

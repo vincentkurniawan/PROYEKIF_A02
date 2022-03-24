@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import id.ac.unpar.proif.northstar_october.Model.Code
 import id.ac.unpar.proif.northstar_october.Model.Inventory
+import id.ac.unpar.proif.northstar_october.View.ProductCartFragments
 import id.ac.unpar.proif.northstar_october.View.ProductDetailsFragments
 import id.ac.unpar.proif.northstar_october.View.ProductListFragments
 import id.ac.unpar.proif.northstar_october.View.ProductTilesFragments
@@ -20,14 +21,17 @@ class MainActivity : AppCompatActivity() {
     lateinit var productListFragments: ProductListFragments
     lateinit var productTilesFragments: ProductTilesFragments
     lateinit var productDetailsFragments: ProductDetailsFragments
+    lateinit var productCartFragments: ProductCartFragments
     lateinit var inv: Inventory
     private var currentFragment = 0
-    private var backPointer = intArrayOf(Code.PAGE_EXIT, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE)
+    private var backPointer = intArrayOf(Code.PAGE_EXIT, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(this.binding.root)
+
+        supportActionBar?.hide()
 
         // Make new inventory
         this.inv = Inventory()
@@ -37,7 +41,9 @@ class MainActivity : AppCompatActivity() {
         this.productListFragments = ProductListFragments.newInstance(this.inv)
         this.productTilesFragments = ProductTilesFragments.newInstance(this.inv)
         this.productDetailsFragments = ProductDetailsFragments.newInstance()
-        fragments = arrayOf(this.productListFragments, this.productTilesFragments, this.productDetailsFragments)
+        this.productCartFragments = ProductCartFragments.newInstance()
+
+        fragments = arrayOf(this.productListFragments, this.productTilesFragments, this.productDetailsFragments, this.productCartFragments)
 
         // Add product-list-fragment to fragment transaction
         val ft = this.fm.beginTransaction()
@@ -46,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         // changePage listener
         this.supportFragmentManager.setFragmentResultListener(
-            "CHANGE_PAGE", this
+            Code.REQKEY_CHANGE_PAGE, this
         ) { requestKey, result ->
             val page = result.getInt("page")
             changePage(page)

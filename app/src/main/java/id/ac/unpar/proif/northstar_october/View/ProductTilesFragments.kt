@@ -67,8 +67,9 @@ class ProductTilesFragments: Fragment(), IProducts, View.OnClickListener, Adapte
         ctSpinner.onItemSelectedListener = this
 
         // set onclick listener
-        binding.ivList.setOnClickListener { view: View -> onClick(view) }
-        binding.showMore.setOnClickListener { view: View -> onClick(view) }
+        binding.ivList.setOnClickListener (this::onClick)
+        binding.showMore.setOnClickListener (this::onClick)
+        binding.ivCart.setOnClickListener(this::onClick)
 
         // load new products
         this.loadProducts()
@@ -115,24 +116,36 @@ class ProductTilesFragments: Fragment(), IProducts, View.OnClickListener, Adapte
         val result = Bundle()
         result.putParcelable("products", Parcels.wrap(product))
         result.putInt("pageFrom", Code.PAGE_TILES_MODE)
-        parentFragmentManager.setFragmentResult("MOVE_DETAILS", result)
+        parentFragmentManager.setFragmentResult(Code.REQKEY_MOVE_TO_DETAILS, result)
         changePage(Code.PAGE_DETAILS_MODE)
     }
 
     override fun onClick(view: View) {
         // tombol ubah ke tiles mode
-        if (view === binding.ivList) {
-            changePage(Code.PAGE_LIST_MODE)
-        } else if (view === binding.showMore) {
-            loadMoreProducts()
+        when (view) {
+            binding.ivList -> {
+                changePage(Code.PAGE_LIST_MODE)
+            }
+            binding.showMore -> {
+                loadMoreProducts()
+            }
+            binding.ivCart -> {
+                changePage(Code.PAGE_CART)
+                sentPageFromInformation()
+            }
         }
     }
 
-    //METHOD GANTI HALAMAN
     private fun changePage(page: Int) {
         val result = Bundle()
         result.putInt("page", page)
-        parentFragmentManager.setFragmentResult("CHANGE_PAGE", result)
+        parentFragmentManager.setFragmentResult(Code.REQKEY_CHANGE_PAGE, result)
+    }
+
+    private fun sentPageFromInformation() {
+        val result = Bundle()
+        result.putInt("pageFrom", Code.PAGE_TILES_MODE)
+        parentFragmentManager.setFragmentResult(Code.REQKEY_PAGE_FROM, result)
     }
 
     // Spinner selected-item
