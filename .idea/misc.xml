@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/category_spinner_dropdown.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/category_spinner_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/fill_order_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/fragment_cart.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/fragment_fill_order.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/fragment_product_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/fragment_product_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/fragment_product_tiles.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/product_cart_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/product_list_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kurni/AndroidStudioProjects/PROYEK_AIF_02/app/src/main/res/layout/product_tiles_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_baseline_apps_24.xml" value="0.1" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/layout/activity_main.xml" value="0.18085106382978725" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/layout/category_spinner_dropdown.xml" value="0.19166666666666668" />
