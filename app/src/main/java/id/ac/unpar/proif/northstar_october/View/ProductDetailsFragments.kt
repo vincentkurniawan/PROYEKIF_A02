@@ -2,10 +2,7 @@ package id.ac.unpar.proif.northstar_october.View
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -44,9 +41,9 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
         }
 
         // set onclick listener
-        binding.btnAdd.setOnClickListener { view: View -> onClick(view) }
-        binding.ivBack.setOnClickListener { view: View -> onClick(view) }
-        binding.ivPics.setOnTouchListener { view: View, motionEvent: MotionEvent ->onTouch(view,motionEvent)}
+        binding.btnAdd.setOnClickListener(this::onClick)
+        binding.ivBack.setOnClickListener(this::onClick)
+        binding.ivPics.setOnTouchListener(this::onTouch)
         return binding.root
     }
 
@@ -83,6 +80,7 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
 
     private fun addCartToast() {
         val toast = Toast.makeText(context, "Product added to cart", Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.CENTER, 0, 0)
         toast.show()
     }
 
