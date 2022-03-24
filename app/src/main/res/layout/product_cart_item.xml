@@ -11,16 +11,21 @@
 
     <CheckBox
         android:id="@+id/checkbox"
+        android:buttonTint="#6639A6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp">
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
 
     </CheckBox>
 
     <ImageView
         android:id="@+id/iv_product"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
         android:layout_marginRight="10dp">
 
     </ImageView>
@@ -34,6 +39,9 @@
         <TextView
             android:id="@+id/tv_name"
             android:text="IPAD MINI 6"
+            android:fontFamily="@font/fredoka_one"
+            android:textSize="18sp"
+            android:textColor="#6639A6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp">
@@ -42,42 +50,59 @@
         <TextView
             android:id="@+id/tv_description"
             android:text="256 GB Storage, Green Color"
+            android:fontFamily="@font/lato"
+            android:textSize="14sp"
+            android:textColor="#6639A6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
         </TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_weight="0.3">
-
-        <Button
-            android:id="@+id/btn_decrease"
-            android:text="-"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp">
-
-        </Button>
 
         <TextView
-            android:id="@+id/tv_quantity"
-            android:text="10"
+            android:id="@+id/tv_price"
+            android:text="$ 2000"
+            android:fontFamily="@font/fredoka_one"
+            android:textSize="18sp"
+            android:textColor="#6639A6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
         </TextView>
 
-        <Button
-            android:id="@+id/btn_increase"
-            android:text="+"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        </Button>
+            <ImageView
+                android:id="@+id/btn_decrease"
+                android:src="@drawable/ic_baseline_remove_circle_24"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            </ImageView>
 
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:text="1"
+                android:fontFamily="@font/fredoka_one"
+                android:textSize="18sp"
+                android:textColor="#6639A6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/btn_increase"
+                android:src="@drawable/ic_baseline_add_circle_24"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp">
+            </ImageView>
+
+        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

@@ -44,10 +44,10 @@ class ProductListAdapter(private val activity: Activity, private var presenter: 
         }
 
         // SET TEXT
-        binding.productName.text = currProduct.name
-        binding.category.text = currProduct.getCategory()
-        binding.condition.text = currProduct.getCondition()
-        binding.price.text = "$ " + currProduct.price
+        binding.productName.text = currProduct.getName()
+        binding.category.text = currProduct.getFormattedCategory()
+        binding.condition.text = currProduct.getFormattedCondition()
+        binding.price.text = currProduct.getFormattedPrice()
         binding.root.setOnClickListener { presenter.moveToDetails(currProduct) }
         return binding.root
     }

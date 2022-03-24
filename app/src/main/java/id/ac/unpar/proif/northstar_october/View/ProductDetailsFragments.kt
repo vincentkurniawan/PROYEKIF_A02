@@ -21,7 +21,7 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
     private var xCoordinateFrom = 0f
     private var xCoordinateAfter = 0f
     private var curPic = 0
-    lateinit var curProduct: Product
+    lateinit var currentProduct: Product
     private var pageFrom: Int = Code.PAGE_LIST_MODE
 
     companion object {
@@ -36,7 +36,7 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
 
         // from fragment list and tiles listener
         parentFragmentManager.setFragmentResultListener(
-            "MOVE_DETAILS", this
+            Code.REQKEY_MOVE_TO_DETAILS, this
         ) { requestKey, result ->
             pageFrom = result.getInt("pageFrom")
             val product = Parcels.unwrap<Any>(result.getParcelable("products")) as Product
@@ -52,18 +52,18 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
 
     fun setProducts(product: Product) {
         // set all products info here
-        binding.tvName.text = product.name
-        binding.tvCategory.text = product.getCategory()
-        binding.tvCondition.text = product.getCondition()
-        binding.tvPrice.text = product.price.toString() + ""
-        binding.tvDesc.text = product.description
-        curProduct = product
+        binding.tvName.text = product.getName()
+        binding.tvCategory.text = product.getFormattedCategory()
+        binding.tvCondition.text = product.getFormattedCondition()
+        binding.tvPrice.text = product.getFormattedPrice()
+        binding.tvDesc.text = product.getDescription()
+        currentProduct = product
 
         //IMPLEMENTASI GLIDE LIBRARY
         Glide.with(requireActivity())
             .load(
                 requireActivity().resources.getIdentifier(
-                    product.photos[0],
+                    product.getPhotos()[0],
                     "drawable",
                     requireActivity().packageName
                 )
@@ -75,6 +75,7 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
     override fun onClick(view: View) {
         if (view === binding.btnAdd) {
             addCartToast()
+            requestAddProductToCart()
         } else if (view === binding.ivBack) {
             changePage(pageFrom)
         }
@@ -83,6 +84,13 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
     private fun addCartToast() {
         val toast = Toast.makeText(context, "Product added to cart", Toast.LENGTH_SHORT)
         toast.show()
+    }
+
+    private fun requestAddProductToCart() {
+        val result = Bundle()
+        result.putInt("pageFrom", Code.PAGE_DETAILS_MODE)
+        result.putParcelable("product", Parcels.wrap(currentProduct))
+        parentFragmentManager.setFragmentResult(Code.REQKEY_ADD_PRODUCT_TO_CART, result)
     }
 
     //METHOD GANTI HALAMAN
@@ -96,11 +104,9 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
         when (motionEvent.action) {
             MotionEvent.ACTION_DOWN -> {
                 xCoordinateFrom = motionEvent.x
-                Log.d("DOWN", xCoordinateFrom.toString() + "")
             }
             MotionEvent.ACTION_UP -> {
                 xCoordinateAfter = motionEvent.x
-                Log.d("UP", xCoordinateAfter.toString() + "")
                 if (Math.abs(xCoordinateAfter - xCoordinateFrom) > 150) {
                     if (xCoordinateAfter > xCoordinateFrom) {
                         // swipe right
@@ -126,7 +132,7 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
         Glide.with(requireActivity())
             .load(
                 requireActivity().resources.getIdentifier(
-                    curProduct.photos[curPic],
+                    currentProduct.getPhotos()[curPic],
                     "drawable",
                     requireActivity().packageName
                 )
