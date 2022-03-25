@@ -4,6 +4,7 @@ import android.os.Parcelable
 import android.util.Log
 import java.lang.StringBuilder
 import kotlinx.parcelize.Parcelize
+import kotlin.math.floor
 import kotlin.math.log
 
 @Parcelize
@@ -22,7 +23,7 @@ class Product() : Parcelable {
         this.condition = condition
         this.description = description
         this.setPhoto(name)
-
+        this.changePriceBasedOnCondition()
     }
 
     companion object {
@@ -100,5 +101,16 @@ class Product() : Parcelable {
             pathBuilder.append("_$i")
             photos.add(pathBuilder.toString())
         }
+    }
+
+    private fun changePriceBasedOnCondition () {
+        var multiplier = .0
+        when (condition) {
+            Code.CONDITION_NEW -> multiplier = 1.0
+            Code.CONDITION_90 -> multiplier = 0.9
+            Code.CONDITION_75 -> multiplier = 0.75
+            Code.CONDITION_50 -> multiplier = 0.5
+        }
+        this.price = (this.price*multiplier).toInt()
     }
 }
