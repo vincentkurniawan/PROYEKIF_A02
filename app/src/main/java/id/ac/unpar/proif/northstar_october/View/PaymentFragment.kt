@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import id.ac.unpar.proif.northstar_october.Model.Box
 import id.ac.unpar.proif.northstar_october.Model.Cart
 import id.ac.unpar.proif.northstar_october.Model.Code
-import id.ac.unpar.proif.northstar_october.Model.Product
 import id.ac.unpar.proif.northstar_october.Presenter.PaymentPresenter
 import id.ac.unpar.proif.northstar_october.databinding.FragmentPaymentBinding
 import org.parceler.Parcels
