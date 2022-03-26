@@ -27,7 +27,7 @@ class PaymentAdapter(private val activity: Activity, private val presenter: Paym
     }
 
     override fun getItem(i: Int): Box {
-        return cart.get(i)
+        return cart[i]
     }
 
     override fun getItemId(i: Int): Long {

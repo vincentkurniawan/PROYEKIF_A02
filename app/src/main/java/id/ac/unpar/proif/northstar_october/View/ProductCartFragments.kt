@@ -111,7 +111,6 @@ class ProductCartFragments: Fragment(), View.OnClickListener, ICart {
         }else{
             noItemSelectedToast()
         }
-
     }
 
     private fun noItemSelectedToast() {

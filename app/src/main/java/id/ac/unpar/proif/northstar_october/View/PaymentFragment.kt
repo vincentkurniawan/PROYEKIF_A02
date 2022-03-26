@@ -1,10 +1,13 @@
 package id.ac.unpar.proif.northstar_october.View
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import id.ac.unpar.proif.northstar_october.Model.Address
 import id.ac.unpar.proif.northstar_october.Model.Box
 import id.ac.unpar.proif.northstar_october.Model.Cart
 import id.ac.unpar.proif.northstar_october.Model.Code
@@ -42,8 +45,16 @@ class PaymentFragment : Fragment(), View.OnClickListener, IPayment {
             loadNewCart(cart.getCart())
             presenter.changeTotal()
         }
+        parentFragmentManager.setFragmentResultListener(
+            Code.REQKEY_CHANGE_ADDRESS_ON_PAYMENT, this
+        ) { requestKey, result ->
+            val address = Parcels.unwrap<Any>(result.getParcelable("address")) as Address
+            presenter.setAddress(address)
+        }
 
+        binding.pay.setOnClickListener(this::onClick)
         binding.ivBack.setOnClickListener(this::onClick)
+        binding.btnEditAddress.setOnClickListener(this::onClick)
 
         return binding.root
     }
@@ -54,7 +65,14 @@ class PaymentFragment : Fragment(), View.OnClickListener, IPayment {
                 changePage(Code.PAGE_CART)
             }
             binding.btnEditAddress -> {
-                TODO("CHANGE PAGE HERE")
+                changePage(Code.PAGE_ADDRESS)
+            }
+            binding.pay -> {
+                if (presenter.getAddress().getAddress() != "") {
+                    paymentSuccessfulCreateToast()
+                }else{
+                    paymentNotSuccessCreateToast()
+                }
             }
         }
     }
@@ -79,8 +97,29 @@ class PaymentFragment : Fragment(), View.OnClickListener, IPayment {
         parentFragmentManager.setFragmentResult(Code.REQKEY_REMOVE_BOX_AT_CART, result)
     }
 
+    override fun autoMovePageToCart() {
+        changePage(Code.PAGE_CART)
+    }
+
+    override fun changeReceiverName(name: String) {
+        binding.tvReceiverName.text = name
+    }
+
     private fun loadNewCart (cart: ArrayList<Box>) {
         presenter.loadCart(cart)
+    }
+
+    private fun paymentSuccessfulCreateToast() {
+        val address = presenter.getAddress()
+        val toast = Toast.makeText(context, "Payment Successful!\nYour item will be delivered to ${address.getName()}\nAt ${address.getAddress()}\nWith phone number: ${address.getPhoneNumber()}", Toast.LENGTH_LONG)
+        toast.setGravity(Gravity.CENTER, 0, 0)
+        toast.show()
+    }
+
+    private fun paymentNotSuccessCreateToast() {
+        val toast = Toast.makeText(context, "Please add receiver address information first!", Toast.LENGTH_LONG)
+        toast.setGravity(Gravity.CENTER, 0, 0)
+        toast.show()
     }
 
 }

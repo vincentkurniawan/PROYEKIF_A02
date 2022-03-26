@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#FFFF">
+
+    <RelativeLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/fredoka_one"
+            android:text="MANAGE ADDRESS"
+            android:textColor="#6639A6"
+            android:textSize="22sp">
+        </TextView>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_add_address"
+        android:layout_below="@id/ll_title"
+        android:layout_weight="1"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/btn_add_address"
+        android:text="ADD ADDRESS"
+        android:backgroundTint="#6639A6"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:fontFamily="@font/fredoka_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp">
+
+    </Button>
+
+</RelativeLayout>
