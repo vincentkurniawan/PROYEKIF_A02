@@ -20,9 +20,17 @@ class MainActivity : AppCompatActivity() {
     lateinit var productDetailsFragments: ProductDetailsFragments
     lateinit var productCartFragments: ProductCartFragments
     lateinit var paymentFragment: PaymentFragment
+    lateinit var addressFragment: AddressFragment
     lateinit var inv: Inventory
     private var currentFragment = 0
-    private var backPointer = intArrayOf(Code.PAGE_EXIT, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE, Code.PAGE_LIST_MODE, Code.PAGE_CART)
+    private var backPointer = intArrayOf(
+        Code.PAGE_EXIT,
+        Code.PAGE_LIST_MODE,
+        Code.PAGE_LIST_MODE,
+        Code.PAGE_LIST_MODE,
+        Code.PAGE_CART,
+        Code.PAGE_PAYMENT
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +49,16 @@ class MainActivity : AppCompatActivity() {
         this.productDetailsFragments = ProductDetailsFragments.newInstance()
         this.productCartFragments = ProductCartFragments.newInstance()
         this.paymentFragment = PaymentFragment.newInstance()
+        this.addressFragment = AddressFragment.newInstance()
 
-        fragments = arrayOf(this.productListFragments, this.productTilesFragments, this.productDetailsFragments, this.productCartFragments, this.paymentFragment)
+        fragments = arrayOf(
+            this.productListFragments,
+            this.productTilesFragments,
+            this.productDetailsFragments,
+            this.productCartFragments,
+            this.paymentFragment,
+            this.addressFragment
+        )
 
         // Add product-list-fragment to fragment transaction
         val ft = this.fm.beginTransaction()

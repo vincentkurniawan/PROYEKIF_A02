@@ -61,6 +61,7 @@
         </TextView>
 
         <TextView
+            android:id="@+id/tv_receiver_name"
             android:text="ITSVINCENTK"
             android:fontFamily="@font/fredoka_one"
             android:textSize="14sp"
@@ -114,11 +115,11 @@
 
         <Button
             android:id="@+id/pay"
-            android:backgroundTint="#6639A6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:backgroundTint="#6639A6"
             android:text="PAY">
 
         </Button>
@@ -134,9 +135,9 @@
         android:paddingBottom="25dp">
         <ImageView
             android:id="@+id/iv_back"
-            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
-            android:layout_width="30dp"
-            android:layout_height="30dp">
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:layout_width="40dp"
+            android:layout_height="40dp">
         </ImageView>
     </LinearLayout>
 
