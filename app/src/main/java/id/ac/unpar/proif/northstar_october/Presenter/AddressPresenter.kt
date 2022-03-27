@@ -13,6 +13,7 @@ class AddressPresenter (private val ui: IAddress){
             setFirstAddressDefault()
         }
         ui.loadAddress(addressList)
+        ui.changeAddressOnPayment()
     }
 
     fun editAddress (addressAwal: Address, addressEdit: Address) {
@@ -25,6 +26,7 @@ class AddressPresenter (private val ui: IAddress){
             }
         }
         ui.loadAddress(addressList)
+        ui.changeAddressOnPayment()
     }
 
     fun removeAddress (address: Address) {
@@ -37,6 +39,7 @@ class AddressPresenter (private val ui: IAddress){
         }
         addressList.remove(address)
         ui.loadAddress(addressList)
+        ui.changeAddressOnPayment()
     }
 
     fun makeDefaultAddress (address: Address) {
@@ -48,6 +51,7 @@ class AddressPresenter (private val ui: IAddress){
         val idx = addressList.indexOf(address)
         addressList[idx].makeDefault()
         ui.loadAddress(addressList)
+        ui.changeAddressOnPayment()
     }
 
     private fun setFirstAddressDefault () {
