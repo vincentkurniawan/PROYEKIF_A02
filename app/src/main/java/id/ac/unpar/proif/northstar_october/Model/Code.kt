@@ -1,9 +1,14 @@
 package id.ac.unpar.proif.northstar_october.Model
 
+import android.os.Bundle
+
 object Code {
     const val PAGE_LIST_MODE = 0
     const val PAGE_TILES_MODE = 1
     const val PAGE_DETAILS_MODE = 2
+    const val PAGE_CART = 3
+    const val PAGE_PAYMENT = 4
+    const val PAGE_ADDRESS = 5
     const val PAGE_EXIT = -100
 
     const val CONDITION_NEW = 100
@@ -25,4 +30,16 @@ object Code {
 
     const val CATEGORY_FILTER_ON = 600
     const val CATEGORY_FILTER_OFF = 601
+
+    // request key listener
+    const val REQKEY_ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART"
+    const val REQKEY_CHANGE_PAGE = "CHANGE_PAGE"
+    const val REQKEY_MOVE_TO_DETAILS = "MOVE_TO_DETAILS"
+    const val REQKEY_MOVE_TO_PAYMENT = "MOVE_TO_PAYMENT"
+    const val REQKEY_PAGE_FROM = "PAGE_FROM"
+    const val REQKEY_REMOVE_BOX_AT_CART = "REMOVE_BOX_AT_CART"
+    const val REQKEY_CHANGE_ADDRESS_ON_PAYMENT = "CHANGE_ADDRESS_ON_PAYMENT"
+
+    const val DRAWABLE_SOURCE_FAVORITE_OFF = "ic_favorite_off"
+    const val DRAWABLE_SOURCE_FAVORITE_ON = "ic_favorite_on"
 }

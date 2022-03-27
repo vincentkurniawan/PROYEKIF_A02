@@ -21,7 +21,7 @@ class ProductPresenter(private val ui: IProducts) {
         val tempProduct = ArrayList<Product>()
         val size = products.size
         for (i in 0 until size) {
-            if (products[i].name.lowercase().contains(search.lowercase())) {
+            if (products[i].getName().lowercase().contains(search.lowercase())) {
                 tempProduct.add(products[i])
             }
         }
@@ -33,11 +33,11 @@ class ProductPresenter(private val ui: IProducts) {
             Code.SORT_PRODUCTS_NAME -> {
                 when (sortConditions[0]) {
                     Code.SORT_ASCENDING -> {
-                        Collections.sort(products) { product, t1 -> t1.name.compareTo(product.name) }
+                        Collections.sort(products) { product, t1 -> t1.getName().compareTo(product.getName()) }
                         sortConditions[0] = Code.SORT_DESCENDING
                     }
                     Code.SORT_DESCENDING -> {
-                        Collections.sort(products) { product, t1 -> product.name.compareTo(t1.name) }
+                        Collections.sort(products) { product, t1 -> product.getName().compareTo(t1.getName()) }
                         sortConditions[0] = Code.SORT_ASCENDING
                     }
                 }
@@ -45,11 +45,11 @@ class ProductPresenter(private val ui: IProducts) {
             Code.SORT_PRODUCTS_CONDITION -> {
                 when (sortConditions[1]) {
                     Code.SORT_ASCENDING -> {
-                        Collections.sort(products) { product, t1 -> t1.condition.compareTo(product.condition) }
+                        Collections.sort(products) { product, t1 -> t1.getCondition().compareTo(product.getCondition()) }
                         sortConditions[1] = Code.SORT_DESCENDING
                     }
                     Code.SORT_DESCENDING -> {
-                        Collections.sort(products) { product, t1 -> product.condition.compareTo(t1.condition) }
+                        Collections.sort(products) { product, t1 -> product.getCondition().compareTo(t1.getCondition()) }
                         sortConditions[1] = Code.SORT_ASCENDING
                     }
                 }
@@ -57,11 +57,11 @@ class ProductPresenter(private val ui: IProducts) {
             Code.SORT_PRODUCTS_PRICE -> {
                 when (sortConditions[2]) {
                     Code.SORT_ASCENDING -> {
-                        Collections.sort(products) { product, t1 -> t1.price.compareTo(product.price) }
+                        Collections.sort(products) { product, t1 -> t1.getPrice().compareTo(product.getPrice()) }
                         sortConditions[2] = Code.SORT_DESCENDING
                     }
                     Code.SORT_DESCENDING -> {
-                        Collections.sort(products) { product, t1 -> product.price.compareTo(t1.price) }
+                        Collections.sort(products) { product, t1 -> product.getPrice().compareTo(t1.getPrice()) }
                         sortConditions[2] = Code.SORT_ASCENDING
                     }
                 }
@@ -77,7 +77,7 @@ class ProductPresenter(private val ui: IProducts) {
                 tempProducts = ArrayList()
                 val productsSize = products.size
                 for (i in 0 until productsSize) {
-                    if (products[i].category == category) {
+                    if (products[i].getCategory() == category) {
                         tempProducts.add(products[i])
                     }
                 }

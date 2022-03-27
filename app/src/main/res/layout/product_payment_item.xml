@@ -9,23 +9,11 @@
     android:background="@drawable/rounded_corner_inputfield"
     >
 
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:buttonTint="#6639A6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp">
-
-
-    </CheckBox>
-
     <ImageView
         android:id="@+id/iv_product"
         android:layout_width="100dp"
         android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
     </ImageView>

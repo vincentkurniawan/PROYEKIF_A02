@@ -1,26 +1,37 @@
 package id.ac.unpar.proif.northstar_october.Model
 
-class Box {
-    lateinit var product: Product
-    var quantity = 0
-    var selected = false
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-    constructor(product: Product) {
-        this.product = product
+@Parcelize
+class Box (private var product: Product): Parcelable  {
+    private var quantity = 1
+    private var isChecked = false
+
+    fun getProduct (): Product {
+        return product
     }
 
-    fun makeQuantity (value: Int) {
-        this.quantity = value
+    fun getQuantity (): Int {
+        return quantity
     }
 
     fun addQuantity (value: Int) {
-        this.quantity += value
+        quantity += value
     }
 
-    fun triggerSelected () {
-        selected = when (selected) {
-            false -> true
+    fun getTotalPrice (): Int {
+        return quantity * product.getPrice()
+    }
+
+    fun toogleChecked () {
+        isChecked = when (isChecked) {
             true -> false
+            false -> true
         }
+    }
+
+    fun getIsChecked (): Boolean {
+        return isChecked
     }
 }

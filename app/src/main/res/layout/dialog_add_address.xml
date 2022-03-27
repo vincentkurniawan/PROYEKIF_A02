@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <TextView
+        android:id="@+id/tv_add_address_title"
+        android:text="ADD ADDRESS"
+        android:fontFamily="@font/fredoka_one"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:background="#6639A6"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:gravity="center">
+        <TextView
+            android:text="ADDRESS"
+            android:fontFamily="@font/fredoka_one"
+            android:textSize="16sp"
+            android:textColor="#6639A6"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center">
+
+        </TextView>
+        <EditText
+            android:id="@+id/et_address"
+            android:fontFamily="@font/lato"
+            android:textSize="16sp"
+            android:textColor="#6639A6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6639A6">
+
+        </EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:text="NAME"
+            android:fontFamily="@font/fredoka_one"
+            android:textSize="16sp"
+            android:textColor="#6639A6"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center">
+
+        </TextView>
+        <EditText
+            android:id="@+id/et_name"
+            android:fontFamily="@font/lato"
+            android:textSize="16sp"
+            android:textColor="#6639A6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6639A6">
+
+        </EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:text="PHONE"
+            android:fontFamily="@font/fredoka_one"
+            android:textSize="16sp"
+            android:textColor="#6639A6"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center">
+
+        </TextView>
+        <EditText
+            android:id="@+id/et_phone"
+            android:fontFamily="@font/lato"
+            android:textSize="16sp"
+            android:textColor="#6639A6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6639A6">
+
+        </EditText>
+    </LinearLayout>
+</LinearLayout>

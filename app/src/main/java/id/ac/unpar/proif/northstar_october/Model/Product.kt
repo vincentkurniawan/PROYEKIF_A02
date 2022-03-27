@@ -4,16 +4,17 @@ import android.os.Parcelable
 import android.util.Log
 import java.lang.StringBuilder
 import kotlinx.parcelize.Parcelize
+import kotlin.math.floor
 import kotlin.math.log
 
 @Parcelize
 class Product() : Parcelable {
-    var name: String = ""
-    var category: Int = 0
-    var price: Int = 0
-    var condition: Int = 0
-    var description: String = ""
-    var photos: ArrayList<String> = ArrayList()
+    private var name: String = ""
+    private var category: Int = 0
+    private var price: Int = 0
+    private var condition: Int = 0
+    private var description: String = ""
+    private var photos: ArrayList<String> = ArrayList()
 
     constructor(name:String, category:Int, price:Int, condition:Int, description:String) : this() {
         this.name = name
@@ -22,7 +23,7 @@ class Product() : Parcelable {
         this.condition = condition
         this.description = description
         this.setPhoto(name)
-
+        this.changePriceBasedOnCondition()
     }
 
     companion object {
@@ -41,7 +42,31 @@ class Product() : Parcelable {
         const val PHOTO_SOURCE_PATH = "@drawable/"
     }
 
-    fun getCategory (): String {
+    fun getName(): String {
+        return name
+    }
+
+    fun getDescription(): String {
+        return description
+    }
+
+    fun getPhotos(): ArrayList<String> {
+        return photos
+    }
+
+    fun getPrice(): Int {
+        return price
+    }
+
+    fun getCategory(): Int {
+        return category
+    }
+
+    fun getCondition(): Int {
+        return condition
+    }
+
+    fun getFormattedCategory (): String {
         return when (this.category) {
             Code.CATEGORY_ANDROID_PHONE -> CATEGORY_ANDROID_PHONE
             Code.CATEGORY_ANDROID_TABLET -> CATEGORY_ANDROID_TABLET
@@ -51,7 +76,7 @@ class Product() : Parcelable {
         }
     }
 
-    fun getCondition (): String {
+    fun getFormattedCondition (): String {
         return when (this.condition) {
             Code.CONDITION_50 -> CONDITION_50
             Code.CONDITION_75 -> CONDITION_75
@@ -61,6 +86,11 @@ class Product() : Parcelable {
         }
     }
 
+    fun getFormattedPrice (): String {
+        return "$ $price"
+    }
+
+
     private fun setPhoto (name: String) {
         var lowerCaseName = name.lowercase()
         lowerCaseName = lowerCaseName.replace("\\s".toRegex(), "")
@@ -69,9 +99,18 @@ class Product() : Parcelable {
             pathBuilder.append(PHOTO_SOURCE_PATH)
             pathBuilder.append(lowerCaseName)
             pathBuilder.append("_$i")
-            System.out.println(pathBuilder.toString())
-            Log.d("key",pathBuilder.toString())
             photos.add(pathBuilder.toString())
         }
+    }
+
+    private fun changePriceBasedOnCondition () {
+        var multiplier = .0
+        when (condition) {
+            Code.CONDITION_NEW -> multiplier = 1.0
+            Code.CONDITION_90 -> multiplier = 0.9
+            Code.CONDITION_75 -> multiplier = 0.75
+            Code.CONDITION_50 -> multiplier = 0.5
+        }
+        this.price = (this.price*multiplier).toInt()
     }
 }
