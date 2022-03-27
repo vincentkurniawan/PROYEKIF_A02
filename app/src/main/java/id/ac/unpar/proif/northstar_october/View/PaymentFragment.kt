@@ -70,6 +70,8 @@ class PaymentFragment : Fragment(), View.OnClickListener, IPayment {
             binding.pay -> {
                 if (presenter.getAddress().getAddress() != "") {
                     paymentSuccessfulCreateToast()
+                    requestRemoveAllFinalCart()
+                    changePage(Code.PAGE_CART)
                 }else{
                     paymentNotSuccessCreateToast()
                 }
@@ -120,6 +122,10 @@ class PaymentFragment : Fragment(), View.OnClickListener, IPayment {
         val toast = Toast.makeText(context, "Please add receiver address information first!", Toast.LENGTH_LONG)
         toast.setGravity(Gravity.CENTER, 0, 0)
         toast.show()
+    }
+
+    private fun requestRemoveAllFinalCart () {
+        presenter.resetCart()
     }
 
 }
