@@ -50,4 +50,14 @@ class PaymentPresenter (private val ui: IPayment){
             ui.autoMovePageToCart()
         }
     }
+
+    fun resetCart () {
+        val len = cart.size
+        for (i in 0 until len) {
+            ui.removeBoxAtCart(cart[i])
+        }
+        cart.clear()
+        ui.loadCart(cart)
+        changeTotal()
+    }
 }
