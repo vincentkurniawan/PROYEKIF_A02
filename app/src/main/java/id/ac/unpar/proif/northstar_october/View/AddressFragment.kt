@@ -60,11 +60,15 @@ class AddressFragment: Fragment(), View.OnClickListener, IAddress {
         }
     }
 
-    private fun changeAddressOnPayment () {
+    override fun changeAddressOnPayment () {
         if (presenter.getAddressListSize() > 0) {
             val address = presenter.getDefaultAddress()
             val result = Bundle()
             result.putParcelable("address", Parcels.wrap(address))
+            parentFragmentManager.setFragmentResult(Code.REQKEY_CHANGE_ADDRESS_ON_PAYMENT, result)
+        }else{
+            val result = Bundle()
+            result.putParcelable("address", Parcels.wrap(Address("", "NOT SET YET", "")))
             parentFragmentManager.setFragmentResult(Code.REQKEY_CHANGE_ADDRESS_ON_PAYMENT, result)
         }
     }
