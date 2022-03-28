@@ -62,7 +62,6 @@
 
         <TextView
             android:id="@+id/tv_receiver_name"
-            android:text="ITSVINCENTK"
             android:fontFamily="@font/fredoka_one"
             android:textSize="14sp"
             android:textColor="#6639A6"

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/custom_checkbox.xml" value="0.288" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1185" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_baseline_apps_24.xml" value="0.1" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2605" />
@@ -17,6 +18,9 @@
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.282" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.2595" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_baseline_star_border_24.xml" value="0.2595" />
+        <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_favorite_on.xml" value="0.288" />
+        <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_round_checked.xml" value="0.288" />
+        <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/drawable/ic_round_unchecked.xml" value="0.288" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/layout/activity_main.xml" value="0.18085106382978725" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/layout/address_item.xml" value="0.25" />
         <entry key="..\:/Vanilla/Documents/Kuliah/Semester 6/PIF/PROYEKIF_A02/app/src/main/res/layout/category_spinner_dropdown.xml" value="0.19166666666666668" />

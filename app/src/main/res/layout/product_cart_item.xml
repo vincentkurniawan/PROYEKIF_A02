@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:minWidth="0dp"
         android:minHeight="0dp"
+        android:button="@drawable/custom_checkbox"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp">
 

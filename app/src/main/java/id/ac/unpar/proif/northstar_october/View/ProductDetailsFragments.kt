@@ -73,13 +73,14 @@ class ProductDetailsFragments: Fragment(), View.OnClickListener, View.OnTouchLis
         if (view === binding.btnAdd) {
             addCartToast()
             requestAddProductToCart()
+            changePage(Code.PAGE_CART)
         } else if (view === binding.ivBack) {
             changePage(pageFrom)
         }
     }
 
     private fun addCartToast() {
-        val toast = Toast.makeText(context, "Product added to cart", Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(context, "PRODUCT ADDED TO CART", Toast.LENGTH_LONG)
         toast.setGravity(Gravity.CENTER, 0, 0)
         toast.show()
     }
