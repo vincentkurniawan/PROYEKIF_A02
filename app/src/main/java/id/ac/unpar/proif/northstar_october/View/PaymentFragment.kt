@@ -56,6 +56,8 @@ class PaymentFragment : Fragment(), View.OnClickListener, IPayment {
         binding.ivBack.setOnClickListener(this::onClick)
         binding.btnEditAddress.setOnClickListener(this::onClick)
 
+        presenter.setAddress()
+
         return binding.root
     }
 

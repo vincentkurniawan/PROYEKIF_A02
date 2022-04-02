@@ -9,6 +9,10 @@ class PaymentPresenter (private val ui: IPayment){
     private var cart: ArrayList<Box> = ArrayList()
     private var address: Address = Address("", "NOT SET YET", "")
 
+    fun setAddress() {
+        ui.changeReceiverName(this.address.getName())
+    }
+
     fun setAddress (address: Address) {
         this.address = address
         ui.changeReceiverName(this.address.getName())
