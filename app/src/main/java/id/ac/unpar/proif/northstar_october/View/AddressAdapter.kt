@@ -3,13 +3,11 @@ package id.ac.unpar.proif.northstar_october.View
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -62,33 +60,28 @@ class AddressAdapter (private val activity: Activity, private val presenter: Add
             binding.tvName.text = currentAddress.getName()
             binding.tvPhone.text = currentAddress.getPhoneNumber()
 
-            var isFavoriteDrawable = when (currentAddress.getIsDefault()) {
-                true -> Code.DRAWABLE_SOURCE_FAVORITE_ON
-                false -> Code.DRAWABLE_SOURCE_FAVORITE_OFF
-            }
+            toogleDefault()
 
-            Glide.with(activity)
-                .load(
-                    activity.resources.getIdentifier(
-                        isFavoriteDrawable,
-                        "drawable",
-                        activity.packageName
-                    )
-                )
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .into(binding.ivDefault)
-
-            binding.ivDefault.setOnClickListener(this::onClick)
             binding.ivDelete.setOnClickListener(this::onClick)
             binding.ivEdit.setOnClickListener(this::onClick)
 
         }
 
+        private fun toogleDefault () {
+            when (currentAddress.getIsDefault()) {
+                true -> {
+                    Log.d("VISIBLE","ON")
+                    binding.btnDefault.visibility = View.VISIBLE
+                }
+                false -> {
+                    Log.d("VISIBLE","GONE")
+                    binding.btnDefault.visibility = View.GONE
+                }
+            }
+        }
+
         override fun onClick(view: View?) {
             when (view) {
-                binding.ivDefault -> {
-                    makeDefaultAddress()
-                }
                 binding.ivDelete -> {
                     deleteAddress()
                 }
@@ -118,6 +111,10 @@ class AddressAdapter (private val activity: Activity, private val presenter: Add
             val inflater = activity.layoutInflater
             val view = inflater.inflate(R.layout.dialog_add_address, null)
             view.findViewById<TextView>(R.id.tv_add_address_title).text = "EDIT ADDRESS"
+            view.findViewById<EditText>(R.id.et_address).setText(currentAddress.getAddress())
+            view.findViewById<EditText>(R.id.et_name).setText(currentAddress.getName())
+            view.findViewById<EditText>(R.id.et_phone).setText(currentAddress.getPhoneNumber())
+            view.findViewById<Switch>(R.id.switch_default).isChecked = currentAddress.getIsDefault()
             builder.setView(view)
                 .setPositiveButton("Save",
                     DialogInterface.OnClickListener { dialog, id ->
@@ -125,13 +122,17 @@ class AddressAdapter (private val activity: Activity, private val presenter: Add
                         val address = view.findViewById<EditText>(R.id.et_address).text.toString()
                         val name = view.findViewById<EditText>(R.id.et_name).text.toString()
                         val phone = view.findViewById<EditText>(R.id.et_phone).text.toString()
+                        val res = Address(address, name, phone)
                         when (checkAddress(address, name, phone)) {
                             true -> {
-                                presenter.editAddress(currentAddress, Address(address, name, phone))
+                                presenter.editAddress(currentAddress, res)
                             }
                             false -> {
                                 invalidInputDialogCreateToast()
                             }
+                        }
+                        if (view.findViewById<Switch>(R.id.switch_default).isChecked) {
+                            presenter.makeDefaultAddress(res)
                         }
                     })
                 .setNegativeButton("Cancel",
@@ -146,10 +147,6 @@ class AddressAdapter (private val activity: Activity, private val presenter: Add
                 return true
             }
             return false
-        }
-
-        private fun makeDefaultAddress () {
-            presenter.makeDefaultAddress(currentAddress)
         }
 
         private fun invalidInputDialogCreateToast() {

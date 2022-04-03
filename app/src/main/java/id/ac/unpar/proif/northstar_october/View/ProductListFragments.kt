@@ -162,8 +162,8 @@ class ProductListFragments: Fragment(), IProducts, View.OnClickListener, Adapter
     override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
         when (i) {
             0 -> presenter.changeCategory(Code.CATEGORY_DEFAULT)
-            1 -> presenter.changeCategory(Code.CATEGORY_APPLE_PHONE)
-            2 -> presenter.changeCategory(Code.CATEGORY_APPLE_TABLET)
+            1 -> presenter.changeCategory(Code.CATEGORY_IPHONE)
+            2 -> presenter.changeCategory(Code.CATEGORY_IPAD)
             3 -> presenter.changeCategory(Code.CATEGORY_ANDROID_PHONE)
             4 -> presenter.changeCategory(Code.CATEGORY_ANDROID_TABLET)
         }
