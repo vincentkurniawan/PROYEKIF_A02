@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Switch
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -94,13 +95,17 @@ class AddressFragment: Fragment(), View.OnClickListener, IAddress {
                     val address = view.findViewById<EditText>(R.id.et_address).text.toString()
                     val name = view.findViewById<EditText>(R.id.et_name).text.toString()
                     val phone = view.findViewById<EditText>(R.id.et_phone).text.toString()
+                    val res = Address(address, name, phone)
                     when (checkAddress(address, name, phone)) {
                         true -> {
-                            addAddress(address, name, phone)
+                            presenter.addAddress(res)
                         }
                         false -> {
                             invalidInputDialogCreateToast()
                         }
+                    }
+                    if (view.findViewById<Switch>(R.id.switch_default).isChecked) {
+                        presenter.makeDefaultAddress(res)
                     }
                 })
             .setNegativeButton("Cancel",
@@ -108,10 +113,6 @@ class AddressFragment: Fragment(), View.OnClickListener, IAddress {
                     dialog.dismiss()
                 })
         builder.show()
-    }
-
-    private fun addAddress (address: String, name: String, phone: String) {
-        presenter.addAddress(Address(address, name, phone))
     }
 
     private fun checkAddress (address: String, name: String, phone: String): Boolean {

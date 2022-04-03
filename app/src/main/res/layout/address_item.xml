@@ -88,13 +88,24 @@
         android:layout_weight="1"
         android:gravity="center"
         android:layout_marginLeft="10dp">
-        <ImageView
-            android:id="@+id/iv_default"
-            android:src="@drawable/ic_favorite_off"
-            android:layout_width="40dp"
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_default"-->
+<!--            android:src="@drawable/ic_favorite_off"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginRight="5dp">-->
+<!--        </ImageView>-->
+        <Button
+            android:id="@+id/btn_default"
+            android:text="DEFAULT"
+            android:textSize="9sp"
+            android:padding="0dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
-            android:layout_marginRight="5dp">
-        </ImageView>
+            android:layout_marginRight="5dp"
+            android:backgroundTint="#6639A6">
+
+        </Button>
         <ImageView
             android:id="@+id/iv_edit"
             android:src="@drawable/ic_baseline_edit_note_24"

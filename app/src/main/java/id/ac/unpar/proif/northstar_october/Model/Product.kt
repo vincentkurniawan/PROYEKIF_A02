@@ -1,11 +1,8 @@
 package id.ac.unpar.proif.northstar_october.Model
 
 import android.os.Parcelable
-import android.util.Log
 import java.lang.StringBuilder
 import kotlinx.parcelize.Parcelize
-import kotlin.math.floor
-import kotlin.math.log
 
 @Parcelize
 class Product() : Parcelable {
@@ -35,8 +32,8 @@ class Product() : Parcelable {
         const val CATEGORY_DEFAULT = ""
         const val CATEGORY_ANDROID_PHONE = "ANDROID PHONE"
         const val CATEGORY_ANDROID_TABLET = "ANDROID TABLET"
-        const val CATEGORY_APPLE_PHONE = "APPLE PHONE"
-        const val CATEGORY_APPLE_TABLET = "APPLE TABLET"
+        const val CATEGORY_IPHONE = "IPHONE"
+        const val CATEGORY_IPAD = "IPAD"
 
         const val PHOTO_SOURCE_PATH = "@drawable/"
     }
@@ -69,8 +66,8 @@ class Product() : Parcelable {
         return when (this.category) {
             Code.CATEGORY_ANDROID_PHONE -> CATEGORY_ANDROID_PHONE
             Code.CATEGORY_ANDROID_TABLET -> CATEGORY_ANDROID_TABLET
-            Code.CATEGORY_APPLE_PHONE -> CATEGORY_APPLE_PHONE
-            Code.CATEGORY_APPLE_TABLET -> CATEGORY_APPLE_TABLET
+            Code.CATEGORY_IPHONE -> CATEGORY_IPHONE
+            Code.CATEGORY_IPAD -> CATEGORY_IPAD
             else -> CATEGORY_DEFAULT
         }
     }
