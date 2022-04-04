@@ -102,6 +102,16 @@
         android:paddingTop="5dp"
         android:paddingRight="15dp"
         android:gravity="end">
+        <TextView
+            android:fontFamily="@font/lato"
+            android:textSize="14sp"
+            android:textColor="#6639A6"
+            android:text="SET AS DEFAULT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp">
+
+        </TextView>
         <Switch
             android:id="@+id/switch_default"
             android:layout_width="wrap_content"
